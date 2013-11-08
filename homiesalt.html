@@ -79,6 +79,8 @@
 	<div id="newsfeed">
 		<h3> Announcements <button id="a_button"> + </button> </h3>
 		<div class="scroll_box">
+			<ul id = "postToFeed">
+			</ul>
 			<ul id = "feed"> <!-- These are all li's with tables inside. It is one row with three columns
 						Col 1: Icon, Col 2: Headline Col 3: Data
 				 -->
@@ -149,49 +151,70 @@
 <script src="jquery-1.10.2.js"></script>
 <script>
 	$( document ).ready(function() {
+ 			
+			
 
-        alert( "Thanks for visiting!" );
-        //$("#feed").append("<li><p>Hello World</p></li>");
+       // alert( "Thanks for visiting!" );
         
         $("#a_button").click(function(event) {
-        
-        	var inputBox = $( "<li/>", {
+            $('#postToFeed').empty();
+
+        	var inputBox = $( "<li>", {
         	
-    			html: "<table><tr><td><img src='icon-mg.png'/></td><td>" +
-    			"<form><textarea id = 'a_text' rows='4' cols='50'></textarea></td></tr>" +
+    			html: "<table><tr><td><img src='icon-mg.png'/></td>" +
+    			"<td><p>Title</p></td>" +
+    			"<td><form><textarea id = 'a_text' rows='2' cols='10'></textarea></td></tr>" +
+    			"<tr><td></td><td>Description</td>" +
+    			"<td><form><textarea id = 'a_info' rows='4' cols = '50'></textarea></td></tr>" +
     			"<tr><td><button id = 'post' type = 'button'> post </button></td>" +
     			"<td><button id = 'cancel' type = 'button'> cancel </button></tr></table>"
     			//html: "<img src='icon-mg.png'/><form><input type='text' name='stuff'></form>"
     		});
     		
-    		inputBox.prependTo("#feed");
+    		inputBox.prependTo('#postToFeed');
+    		
     		
     		$("#post").click(function(event) {
     			var usrInput = $('#a_text').val();
+    			var descrip = $('#a_info').val();
     			var d = new Date();
 				var month = d.getMonth()+1;
 				var day = d.getDate();
 				var output = (month<10 ? '0' : '') + month + '/' +
     				(day<10 ? '0' : '') + day;
     				
- 				inputBox.html("<table><tr><td><img src='icon-mg.png'/></td>" +
- 				"<td><h3 class='headline'>" +
- 				usrInput +
- 				"</h3></td>" +
- 				"<td><h3 class='date'>" +
- 				output +
- 				"</h3></td></tr></table>");
- 			});
- 			
- 			$("#cancel").click(function(event) {
- 				inputBox.remove();
+
+
+ 				$("#feed").prepend("<li><table><tr><td><img src='icon-mg.png'/></td><td><h3 class='headline'>" +
+ 				usrInput + "</h3></td><td><h3 class='date'>" + output + "</h3></td></tr><tr><td></td><td><p>" +
+ 				descrip + "</p></td></tr></table></li>");
+ 				$("#feed li:nth-child(" + 1 + ") tr:nth-child(2) td").hide();
+ 				$('#postToFeed').empty();
+
+ 				
  			});
 
-        	//$("#feed").prepend("<li><form><input type='text' name='stuff'></form></li>");
+ 			
+ 			$("#cancel").click(function(event) {
+    			$('#postToFeed').empty();
+ 			});
+
  		});
+ 			
  		
- 		
- 		
+ 		 $('#feed').on('click', 'li', function() {
+ 			var $ind = $(this).index();
+ 			var $clicked = $("#feed li:nth-child(" + ($ind + 1) + ") tr:nth-child(2) td");
+ 			if ($clicked.is(":visible")) {
+ 				$clicked.hide();	
+ 			}
+ 			else {
+ 				$clicked.show();
+ 			}
+ 			
+ 			
+ 		});
+ 	
  
     });
 </script>
