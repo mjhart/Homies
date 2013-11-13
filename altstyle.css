@@ -26,6 +26,7 @@ padding-bottom: 5px;
 background-color: #0fc4af;
 }
 
+
 .nav-bar li
 {
 display:inline;
@@ -86,12 +87,112 @@ margin-left: 2%;
 }
 
 #side-panel ul {
-	list-style-type:none;
+	list-style-type:circle;
 	margin:0;
 	padding:10px;
 	background-color: #0fc4af;
 	background-color: white;
 }
+
+#chore-side-panel {
+	background-color: white;
+	border-radius: 10px;
+	text-align: center;
+	font-family: Arial;
+	padding-top: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 25%;
+}
+
+#chore-side-panel h2 {
+	font-size: 22px;
+}
+
+#chore-side-panel h4 {
+	margin-top: 10px;
+}
+
+#chore-side-panel a {
+	text-decoration: none;
+	color: black;
+	font-weight: bold;		
+}
+
+#chore-side-panel ul {
+	list-style-type:circle;
+	margin:0;
+	padding:10px;
+	background-color: #0fc4af;
+	background-color: white;
+}
+#chore-side-panel li {
+	list-style-type:circle;
+	margin-left:10px;
+	margin-top:10px;
+	margin-bottom:10px;
+	background-color: white;
+	color: black;
+}
+#chore-side-panel span {
+	list-style-type:none;
+	margin-left:20px;
+	color: black;
+}
+
+#previous-chores {
+	float: left;
+	padding: 20px;
+	margin: 10px;
+	background-color: white;
+	border-radius: 10px;
+	padding-right: 20px;
+	padding-left: 10px;
+}
+
+#previous-chores ol {
+	list-style-type:upper-roman;
+	background-color: white;
+	margin-left: 0px;
+}
+
+#previous-chores h3 {
+	font: 22px Tahoma;
+	text-align: center;
+}
+
+#previous-chores li {
+	list-style-type:upper-roman;
+	text-align: center;
+	background-color: white;
+	margin-left: 0px;
+	-border: 1px solid black;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	padding: 10px;
+	font: 16px Tahoma;
+	background-color: #eee;
+	padding: 3px;
+}
+
+#previous-chores span {
+	font-size: 14px;
+}
+
+
+
+
+
+#chores-header-label {
+	font-size: 14px;
+	-border: 1px solid black;
+	border-radius: 3px;
+
+	background-color: #eee;
+
+}
+
+
 
 
 #top-left-panel {
@@ -165,9 +266,23 @@ margin-left: 2%;
 }
 
 #newsfeed h3 {
+	font: 30px Tahoma;
+	text-align: center;
+	margin-bottom: 20px;
+}
+#newsfeed h4 {
 	font: 22px Tahoma;
 	text-align: center;
-	margin-bottom: 10px;
+	margin-bottom: 25px;
+	margin-top: 45px;
+
+}
+#newsfeed h5 {
+	font: 22px Tahoma;
+	text-align: left;
+	margin-bottom: 0px;
+	margin-top: 10px;
+
 }
 
 #money-manager {
@@ -211,6 +326,13 @@ margin-left: 2%;
 
 #money-manager p span {
 	font-size: 14px;
+}
+
+#hidden {
+	visibility:hidden
+}
+#hidden-gone {
+	display:none
 }
 
 button {

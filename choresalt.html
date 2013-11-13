@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Chores</title>
+<link href="altstyle.css" rel="stylesheet" type="text/css"/>
+<link href="logo.png" rel="SHORTCUT ICON">
+</head>
+
+<body>
+	<table> 
+		<tr colspan="3">
+		<!-- Nav Bar -->
+			<ul class="nav-bar"> <!-- Nav Links -->
+				<li><a href="homiesalt.html"><img id="logo" style="width=20px;" src="logo.png"/>Homies</a></li>
+				<li><a href "homiesalt.html"> | </a></li>
+				<li><a href="choresalt.html">Chores</a></li>
+				<li><a href "payments.html">Payments</a></li>
+			</ul>
+		</tr>
+	</table>
+	
+	<div id="full-side">
+	<!-- Side Panel -->	
+		<table>
+			<tr> <!-- Icon -->
+				<td>
+				<div id="top-left-panel">
+					<table>
+					<tr>
+						<td>
+							<img id="main-icon" src="icon-rg.png"/> 
+						</td>
+						<td>
+							<h3>Rachel G.</h3>
+							<span id="chore">Chore: Kitchen</span>
+						</td>
+					</tr>
+					</table>
+				</div>
+				</td>
+			</tr>					
+			<tr> <!-- Info Panel-->
+				<td>
+				<div id="chore-side-panel">
+					<h2> Chore Details: </h2>
+					<table>
+						<tr>
+							<td>
+								<ul>
+									<li> <span>Do the dishes</span> </li>
+									<li> <span>Clean the counters</span> </li>
+									<li> <span>Organize the fridge</span> </li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+				</div>
+				</td>					
+			</tr>
+		</table>	
+	</div>
+		
+	<!-- Newsfeed -->
+	<div id="newsfeed">
+		<h3> Current Chores: </h3>
+		<table align="center">
+			<tr>
+				<td>
+					<table>
+						<tr>
+							<td><img src="icon-rg.png"/></td>
+						</tr>
+						<tr>
+							<td id="chores-header-label"><span>Kitchen</span><td>
+						</tr>
+					</table>
+				</td>
+					<td>
+					<table>
+						<tr>
+							<td><img src="icon-mg.png"/></td>
+						</tr>
+						<tr>
+							<td id="chores-header-label"><span>Cooking</span><td>
+						</tr>
+					</table>
+				</td>
+
+				<td>
+					<table>
+						<tr>
+							<td><img src="icon-pb.png"/></td>
+						</tr>
+						<tr>
+							<td id="chores-header-label"><span>Trash</span><td>
+						</tr>
+					</table>
+				</td>
+				
+				<td>
+					<table>
+						<tr>
+							<td><img src="icon-jt.png"/></td>
+						</tr>
+						<tr>
+							<td id="chores-header-label"><span>Bathrooms</span><td>
+						</tr>
+					</table>
+				</td>
+					<td>
+					<table>
+						<tr>
+							<td><img src="icon-cb.png"/></td>
+						</tr>
+						<tr>
+							<td id="chores-header-label"><span>Groceries</span><td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<h4> Chore Rotation In: 5 days</h4>
+				
+		<h5> Chore Selection:</h5>
+
+
+			<div class="scroll_box">
+
+			<ul id = "feed"> <!-- These are all li's with tables inside. It is one row with three columns
+						Col 1: Icon, Col 2: Headline Col 3: Data
+				 -->
+				<li>
+					<table><tr><td id="hidden"><img src="icon-rg.png"/></td><td width="230px"><h3 class="headline">Cooking</h3></td><td><button id="select_button">SELECT</button></td></tr>
+					<tr><td></td><td id="hidden-gone"><p>Cook dinner for everyone</p><p>Set table</p></td></tr></table>
+				</li>	
+				<li>
+					<table><tr><td id="hidden"><img src="icon-rg.png"/></td><td width="230px"><h3 class="headline">Kitchen</h3></td><td><button id="select_button">SELECT</button></td></tr><tr><td></td><td id="hidden-gone"><p>Put dishes in dishwasher</p><p>Wipe down counters</p></td></tr></table>
+				</li>	
+				<li>
+					<table><tr><td id="hidden"><img src="icon-rg.png"/></td><td width="230px"><h3 class="headline">Trash</h3></td><td><button id="select_button">SELECT</button></td></tr><tr><td></td><td id="hidden-gone"><p>Collect trash from all trashcans</p><p>Take out the trash</p></td></tr></table>
+				</li>
+				<li>
+					<table><tr><td id="hidden"><img src="icon-rg.png"/></td><td width="230px"><h3 class="headline">Bathrom</h3></td><td><button id="select_button">SELECT</button></td></tr><tr><td></td><td id="hidden-gone"><p>Clean toilets and showers</p><p>Wipe down bathroom counters</p></td></tr></table>
+				</li>
+				<li>
+					<table><tr><td id="hidden"><img src="icon-rg.png"/></td><td width="230px"><h3 class="headline">Groceries</h3></td><td><button id="select_button">SELECT</button></td></tr><tr><td></td><td id="hidden-gone"><p>Buy groceries for the house</p></td></tr></table>
+				</li>
+				
+					
+			</ul>	
+		</div>																	
+	</div>
+
+	<!-- Money management -->
+	<div id="previous-chores">
+		<h3> Previous Chores:</h3>
+			<ol>
+				<li>
+				  	<span> Groceries </span>				
+				</li>
+				<li>
+				 	<span> Trash </span>			
+				</li>
+				<li>
+ 					<span> Cooking </span>				
+				</li>																
+			</ol>
+	</div>
+	
+<script src="jquery-1.10.2.js"></script>
+<script>
+	$( document ).ready(function() {
+		
+		$("#feed > li > table > tbody > tr > td").on('click', function() {
+        var $ind = $(this).index();
+        var $tem = (((($(this).parent()).parent()).parent()).parent()).index()
+        if ($ind != 2) {
+    
+        	if ($ind == 0) {
+        		var $unSelect = $("#feed li:nth-child(" + ($tem + 1) + ") tr:nth-child(1) td:nth-child(1)");
+        		var $reShow = $("#feed li:nth-child(" + ($tem + 1) + ") tr:nth-child(1) td:nth-child(3)");
+
+        		if ($unSelect.is(":visible")) {
+        			$(this).css("visibility", "hidden");
+        			$reShow.show();
+
+        		}
+        	}
+        	else {	
+        		var $toShow = $("#feed li:nth-child(" + ($tem + 1) + ") tr:nth-child(2) td:nth-child(2)");
+        		if ($toShow.is(":visible")) {
+ 				$toShow.hide();	
+ 				}
+ 				else {
+ 					$toShow.show();
+ 				}
+        	}
+
+        }
+        else {
+        	$(this).hide()
+        	$("#feed li:nth-child(" + ($tem + 1) + ") tr:nth-child(1) td:nth-child(1)").css("visibility", "visible");
+        }
+   
+
+    });
+ 			
+			
+
+        
+        			
+ 		
+
+ 	
+ 
+    });
+</script>
+
+</body>
+
+</html>
