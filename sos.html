@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Homies</title>
+<link href="sosstyle.css" rel="stylesheet" type="text/css"/>
+<link href="logo.png" rel="SHORTCUT ICON">
+</head>
+
+<body>
+	<table> 
+		<tr colspan="3">
+		<!-- Nav Bar -->
+			<ul class="nav-bar"> <!-- Nav Links -->
+				<li><a href="homiesalt.html"><img id="logo" style="width=20px;" src="logo.png"/>Homies</a></li>
+				<li><a href "homiesalt.html"> | </a></li>
+				<li><a href="choresalt.html">Chores</a></li>
+				<li><a href "payments.html">Payments</a></li>
+				
+			</ul>
+		</tr>
+	</table>
+	
+	
+		
+	<!-- Newsfeed -->
+	<div id="newsfeed">
+		<h3> S.O.S. </h3>
+			<div class="scroll_box">
+
+			<ol id = "feed"> <!-- These are all li's with tables inside. It is one row with three columns
+						Col 1: Icon, Col 2: Headline Col 3: Data
+				 -->
+				<li>
+					<p>Help, I got locked out, someone come home and let me in!</p>
+				</li>						
+				<li>
+					<p>I need someone to come pick me up ASAP, call me as soon as you get this!</p>
+				</li>
+				<li>
+					<p>I'm out and my phone is gonna die soon. Call me know so we can figure out a ride the car!</p>
+				</li>
+				<li>
+					<p>I need a car ASAP!</p>
+				</li>
+				
+			</ol>	
+		</div>																	
+	</div>
+
+	
+	
+<script src="jquery-1.10.2.js"></script>
+<script>
+	$( document ).ready(function() {
+ 			
+
+ 			
+ 		
+ 		 $('#feed').on('click', 'li', function() {
+ 			var $ind = $(this).index();
+ 			var $par = $("#feed li:nth-child(" + ($ind + 1) + ") p").text();
+ 			$.get("http://localhost:8888/sendemail.php", { smessage: $par});
+       
+ 			
+ 			
+ 		});
+ 	
+ 
+    });
+</script>
+
+</body>
+
+</html>
