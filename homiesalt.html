@@ -14,7 +14,7 @@
 				<li><a href="homiesalt.html"><img id="logo" style="width=20px;" src="logo.png"/>Homies</a></li>
 				<li><a href "homiesalt.html"> | </a></li>
 				<li><a href="choresalt.html">Chores</a></li>
-				<li><a href "payments.html">Payments</a></li>
+				<li><a href="finance.html">Finance</a></li>
 				
 			</ul>
 		</tr>
@@ -67,7 +67,9 @@
 						</tr>
 					</table>
 					<br>
-					<h2> Notes &amp; Reminders <button> + </button></h2>
+					<h2> Notes &amp; Reminders <button id="note_button"> + </button></h2>
+					<ul id="note_list">
+					</ul>
 				</div>
 				</td>					
 			</tr>
@@ -126,14 +128,14 @@
 
 	<!-- Money management -->
 	<div id="money-manager">
-		<h3> Money Manager <button> + </button></h3>
+		<h3> Money Manager</h3>
 		<div class="scroll_box">
 			<ul>
 				<li>
 					<p> $20 <br> <span> You owe Monica for Dinner </span></p>				
 				</li>
 				<li>
-					<p> $650 <br> <span> You owe Phoebe for Rent </span></p>				
+					<p> $650 <br> <span> Rent due in 2 days </span></p>				
 				</li>
 				<li>
 					<p> $24.63 <br> <span> You owe Monica for Cable </span></p>				
@@ -155,7 +157,25 @@
 <script>
 	$( document ).ready(function() {
  			
-			
+
+		
+		$("#note_button").click(function(event) {
+			var inputBox= $("<li>", {
+				html: "<input id=note_text></input>" +
+				"<button id = 'post' type = 'button'>post</button>"+
+				"<button id = 'cancel' type = 'button'>X</button>"
+				
+			});
+			inputBox.prependTo("#note_list");
+			$("#post").click(function(event) {
+    			var usrInput = $('#note_text').val();
+
+    			inputBox.html("<p>"+usrInput+"</p>");
+    		});
+    		$("#cancel").click(function(event) {
+    			inputBox.remove();
+ 			});
+		});
 
        // alert( "Thanks for visiting!" );
         

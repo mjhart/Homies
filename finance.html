@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Finance</title>
+	<link href="altstyle.css" rel="stylesheet" type="text/css"/>
+	<link href="finance.css" rel="stylesheet" type="text/css"/>
+	<link href="logo.png" rel="SHORTCUT ICON">
+</head>
+
+<body>
+	<table> 
+		<tr colspan="3">
+		<!-- Nav Bar -->
+			<ul class="nav-bar"> <!-- Nav Links -->
+				<li><a href="homiesalt.html"><img id="logo" style="width=20px;" src="logo.png"/>Homies</a></li>
+				<li><a href "homies.html"> | </a></li>
+				<li><a href "chores.html">Chores</a></li>
+				<li><a href "finance.html">Finance</a></li>
+			</ul>
+		</tr>
+	</table>
+	
+	<div id="finance">
+		<div id="button_box">
+			<form id="radio_type" action="">
+				<input type="radio" id="bill" name="debt" value="Bill">Bill
+				<input type="radio" id="iou" name="debt" value="IOU" checked>IOU
+			</form>
+			<button id="close_button">X</button>
+			<button id="post_button">+</button>
+		</div>
+		<div id="text_box">
+			<textarea id='txta1' placeholder='IOU'></textarea>
+		</div>
+		<table>
+			<tr><td>Total:</td><td><input id="total" type="text" placeholder="$"></td></tr>
+			<tr><td>Matt:</td><td><input id="amount1" type="text" placeholder="$"></td></tr>
+			<tr><td>Wendy:</td><td><input id="amount2" type="text" placeholder="$"></td></tr>
+			<tr><td>Luke:</td><td><input id="amount3" type="text" placeholder="$"></td></tr>
+		</table>
+	</div>
+<script src="jquery-1.10.2.js"></script>
+<script>
+$(document).ready( function(){ 
+		
+		$("#iou").change(function() {
+				$("#text_box").html("<textarea id='txta1' placeholder='Description'></textarea>");
+		});
+		
+		$("#bill").change(function() {
+				$("#text_box").html(
+			"<tr><td>Title:</td><td><input id='title' type='text'></td></tr>" +
+			"<tr><td>Date:</td><td><input id='date' type='text'></td></tr>" +
+			"<tr><td>Recurring:</td><td><input id='recurrance' type='text'></td></tr>" +
+		"</table>");
+		});
+		
+		$("#amount1").change(function() {
+			var sum = Number($(this).val());
+			sum = sum + Number($("#amount2").val());
+			sum = sum + Number($("#amount3").val());
+			$("#total").val(sum);
+		});
+		
+		$("#amount2").change(function() {
+			var sum = Number($(this).val());
+			sum = sum + Number($("#amount1").val());
+			sum = sum + Number($("#amount3").val());
+			$("#total").val(sum);
+		});
+		
+		$("#amount3").change(function() {
+			var sum = Number($(this).val());
+			sum = sum + Number($("#amount2").val());
+			sum = sum + Number($("#amount1").val());
+			$("#total").val(sum);
+		});
+		
+		/*
+		$(".cb-enable").click(function(){
+			var parent = $(this).parents('.switch');
+			$('.cb-disable',parent).removeClass('selected');
+			$(this).addClass('selected');
+			$('.checkbox',parent).attr('checked', true);
+		});
+		$(".cb-disable").click(function(){
+			var parent = $(this).parents('.switch');
+			$('.cb-enable',parent).removeClass('selected');
+			$(this).addClass('selected');
+			$('.checkbox',parent).attr('checked', false);
+		});
+		*/
+	});
+</script>
+</body>
+</html>
