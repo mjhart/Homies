@@ -16,6 +16,7 @@ body {
 	background-color: #b8fff7;
 	min-width: 1500px;
 }
+
 ul
 {
 list-style-type:none;
@@ -63,7 +64,6 @@ margin-left: 2%;
 	padding-top: 10px;
 	padding-left: 15px;
 	padding-right: 15px;
-	padding-bottom: 100%;
 }
 
 #side-panel h2 {
@@ -116,7 +116,7 @@ margin-left: 2%;
 	margin: 10px;
 	background-color: white;
 	border-radius: 10px;
-	overflow: scroll;
+	//overflow: scroll;
 	height: 700px;
 	text-align: center;
 }

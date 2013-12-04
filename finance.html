@@ -12,7 +12,7 @@
 		<tr colspan="3">
 		<!-- Nav Bar -->
 			<ul class="nav-bar"> <!-- Nav Links -->
-				<li><a href="homiesalt.html"><img id="logo" style="width=20px;" src="logo.png"/>Homies</a></li>
+				<li><a href="homies.html"><img id="logo" style="width=20px;" src="logo.png"/>Homies</a></li>
 				<li><a href "homies.html"> | </a></li>
 				<li><a href "chores.html">Chores</a></li>
 				<li><a href "finance.html">Finance</a></li>
@@ -20,6 +20,64 @@
 		</tr>
 	</table>
 	
+	<!-- left panel-->
+	<div id="full-side">
+	<!-- Side Panel -->	
+		<table>
+			<tr> <!-- Icon -->
+				<td>
+				<div id="top-left-panel">
+					<table>
+					<tr>
+						<td>
+							<img id="main-icon" src="icon-rg.png"/> 
+						</td>
+						<td>
+							<h3>Rachel G.</h3>
+							<span id="chore">Chore: Kitchen</span>
+						</td>
+					</tr>
+					</table>
+				</div>
+				</td>
+			</tr>					
+			<tr> <!-- Info Panel-->
+				<td>
+				<div id="side-panel">
+					<h2> Friday, October 18th </h2>
+					<table>
+						<tr>
+							<td>
+								<h4><a href "availability.html"> Availability </a></h4>
+								<ul>
+									<li> Joey's Car </li>
+									<li> Phoebe's Cab </li>
+									<li> Washer </li>
+									<li> Dryer </li>
+								</ul>
+							</td>
+							<td>
+								<h4><a href "shopping.html"> Shopping </a></h4>
+								<ul>	
+									<li> swiffer pods </li>
+									<li> red cups </li>
+									<li> toilet paper </li>
+									<li> detergent </li>										
+								</ul>
+							</td>
+						</tr>
+					</table>
+					<br>
+					<h2> Notes &amp; Reminders <button id="note_button"> + </button></h2>
+					<ul id="note_list">
+					</ul>
+				</div>
+				</td>					
+			</tr>
+		</table>	
+	</div>
+	
+	<!-- finance box-->
 	<div id="finance">
 		<div id="button_box">
 			<form id="radio_type" action="">
@@ -39,9 +97,73 @@
 			<tr><td>Luke:</td><td><input id="amount3" type="text" placeholder="$"></td></tr>
 		</table>
 	</div>
+	
+		
+	<!--things to check off-->
+	<div id="money-manager">
+		<h3>You were payed</h3>
+		<div class="scroll_box">
+			<ul>
+				<li>
+					<p> $20 <br> <span> You owe Monica for Dinner </span></p>				
+				</li>
+				<li>
+					<p> $650 <br> <span> Rent due in 2 days </span></p>				
+				</li>
+				<li>
+					<p> $24.63 <br> <span> You owe Monica for Cable </span></p>				
+				</li>
+				<li>
+					<p> $25 <br> <span> You owe Joey for Alcohol </span></p>				
+				</li>	
+				<li>
+					<p> $23.33 <br> <span> You owe Monica for Electric </span></p>				
+				</li>
+				<li>
+					<p> $100 <br> <span> You owe Ross for Losing a bet </span></p>				
+				</li>																								
+			</ul>
+		</div>
+	</div>
+	
+	<!-- owed money-->
+	<div id="money-manager">
+		<h3>You Owe</h3>
+		<div class="scroll_box">
+			<ul>
+				<li>
+					<button class="paid_button">Paid</button>
+					<p> IOU $20 <br> <span> You owe Monica for Dinner </span></p>			
+				</li>
+				<li>
+					<button class="paid_button">Paid</button>
+					<p> Bill $650 <br> <span> Rent due in 2 days </span></p>			
+				</li>
+				<li>
+					<button class="paid_button">Paid</button>
+					<p> IOU $24.63 <br> <span> You owe Monica for Cable </span></p>			
+				</li>
+				<li>
+					<button class="paid_button">Paid</button>
+					<p> IOU $25 <br> <span> You owe Joey for Alcohol </span></p>			
+				</li>	
+				<li>
+					<button class="paid_button">Paid</button>
+					<p> IOU $23.33 <br> <span> You owe Monica for Electric </span></p>			
+				</li>
+				<li>
+					<button class="paid_button">Paid</button>
+					<p> IOU $100 <br> <span> You owe Ross for Losing a bet </span></p>			
+				</li>																								
+			</ul>
+		</div>
+	</div>
+
+	
 <script src="jquery-1.10.2.js"></script>
 <script>
 $(document).ready( function(){ 
+		alert('hello');
 		
 		$("#iou").change(function() {
 				$("#text_box").html("<textarea id='txta1' placeholder='Description'></textarea>");
@@ -53,6 +175,15 @@ $(document).ready( function(){
 			"<tr><td>Date:</td><td><input id='date' type='text'></td></tr>" +
 			"<tr><td>Recurring:</td><td><input id='recurrance' type='text'></td></tr>" +
 		"</table>");
+		});
+		
+		$("#total").change(function() {
+			var sum = Number($(this).val());
+			sum = Number($("#total").val());
+			var div = sum/3;
+			$("#amount1").val(div);
+			$("#amount2").val(div);
+			$("#amount3").val(div);
 		});
 		
 		$("#amount1").change(function() {
@@ -76,20 +207,9 @@ $(document).ready( function(){
 			$("#total").val(sum);
 		});
 		
-		/*
-		$(".cb-enable").click(function(){
-			var parent = $(this).parents('.switch');
-			$('.cb-disable',parent).removeClass('selected');
-			$(this).addClass('selected');
-			$('.checkbox',parent).attr('checked', true);
+		$('.paid_button').click(function(event) {
+			$(this).parent().hide();
 		});
-		$(".cb-disable").click(function(){
-			var parent = $(this).parents('.switch');
-			$('.cb-enable',parent).removeClass('selected');
-			$(this).addClass('selected');
-			$('.checkbox',parent).attr('checked', false);
-		});
-		*/
 	});
 </script>
 </body>
