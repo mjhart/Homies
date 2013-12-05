@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge"> <!-- For intranet testing only, remove in production. -->
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <title>Slide Show</title>
+</head>
+<!--<output id="list"></output>-->
+<style>
+ul {list-style-type: none;}
+div{border:1px solid black;background-color: black;}
+body{background-image:url("corkboard.jpg");padding-top:15px;padding-left:15px;color:black;font-size: 12px;font-weight: bold;}
+button{}
+</style>
+
+<body>
+  <div id="slideShowImages">
+  <ul>
+    <li><img src="images/slide1.jpg" alt="Slide 1" /></li>
+    <li><img src="images/slide2.jpg" alt="Slide 2" /></li>
+    <li><img src="images/slide3.jpg" alt="Slide 3" /></li>    
+    <li id="newImage"><img src=""/> </li>
+  <ul>  
+  </div>
+  <input type="file" id="files" name="files[]" multiple /><br>
+  <script src="slideShow.js"></script>
+<script>
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    // files is a FileList of File objects. List some properties.
+    var output = [];
+    for (var i = 0, f; f = files[i]; i++) {
+      output.push(escape(f.name));
+    }
+    var myLis = document.getElementsByTagName('li');
+    var lastLi = myLis[myLis.length-1];    
+    //document.getElementById('slideShowImages').lastChild().innerHTML = '<img src="' + output.join('') + '" alt="Slide 5" />';
+    lastLi.innerHTML = '<img src="' + output.join('') + '" alt="Slide 5" />';
+  }
+
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+</script>
+
+</body>
+
+</html>
