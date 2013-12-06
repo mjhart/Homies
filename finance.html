@@ -107,18 +107,18 @@
 	<div class="money-manager" id="incoming">
 		<h3>IOU's</h3>
 		<div class="scroll_box">
-			<ul id= income_list>
+			<ul id='income_list'>
 				<li>
 					<span>$20</span>
 					<button class="accept_button">Accept</button>
 					<button class="reject_button">Reject</button>
-					<p><span>Monica paid for: Lunch</span></p>			
+					<p><span>Monica <span class="to_change">paid</span> for: Lunch</span></p>			
 				</li>
 				<li>
 					<span>$5</span>
 					<button class="accept_button">Accept</button>
 					<button class="reject_button">Reject</button>
-					<p><span>Ross paid for: Breaking your headphones</span></p>				
+					<p><span>Ross <span class="to_change">paid</span> for: Breaking your headphones</span></p>				
 				</li>
 				<li>
 					<span>$35</span>
@@ -170,6 +170,24 @@ $(document).ready( function(){
 				$("#text_box").html("<textarea id='txta1' placeholder='Description'></textarea>");
 				meItem.remove();
 		});
+		
+		$("#note_button").click(function(event) {
+                        var inputBox= $("<li>", {
+                                html: "<input id=note_text></input>" +
+                                "<button id = 'post' type = 'button'>post</button>"+
+                                "<button id = 'cancel' type = 'button'>X</button>"
+                                
+                        });
+                        inputBox.prependTo("#note_list");
+                        $("#post").click(function(event) {
+                            var usrInput = $('#note_text').val();
+
+                            inputBox.html("<p>"+usrInput+"</p>");
+                    });
+                    $("#cancel").click(function(event) {
+                            inputBox.remove();
+                         });
+                });
 		
 		$("#bill").change(function() {
 				$("#text_box").html(
@@ -289,14 +307,30 @@ $(document).ready( function(){
     				newItem.prependTo('#income_list');
 				}
 			}
+			else{
+				var amt6 = Number($("#amount6").val());
+				if(amt6 > 0) {
+					var datestr = $('#date').val();
+					var date = new Date(datestr);
+					var today = new Date();
+					var daydif = date.getDate()-today.getDate();
+					var input = $('#title').val();
+					$('#you-owe ul').append(
+						"<li><button class='paid_button'>Paid</button>"+
+						"<p> Bill $"+amt6+ "<br> <span>"+ input + " due in "+daydif+ " days </span></p></li>");
+				}
+			}	
 		});
 		
-		$('.accept_button').click(function(event) {
+		$('#income_list').on('click', '.accept_button', function(event) {
 			$(this).parent().remove();
 		});
 		
-		$('.reject_button').click(function(event) {
-			$(this).parent().find('button').remove();
+		$('#income_list').on('click', '.reject_button', function(event) {
+			var parent = $(this).parent()
+			parent.find('.reject_button').remove();
+			parent.find('.accept_button').text('Forgive');
+			parent.find('.to_change').text('owes you');
 		});
 	});
 </script>
