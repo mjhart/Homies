@@ -10,21 +10,14 @@
 	<table> 
 		<tr colspan="3">
 		<!-- Nav Bar -->
-			<ul class="nav-bar"> <!-- Nav Links -->
-<<<<<<< HEAD
-				<li><a href="homiesalt.html"><img id="logo" style="width=20px;" src="logo.png"/>Homies</a></li>
-				<li><a href "homiesalt.html"> | </a></li>
-				<li><a href="choresalt.html">Chores</a></li>
-				<li><a href="finance.html">Finance</a></li>
-				
-=======
+			<ul class="nav-bar"> <!-- Nav Links -->		
+
 				<li><a href="homiesalt.html" class="active"><img id="logo" style="width=20px;" src="logo.png"/>Homies</a></li>
 				<li><a href="homiesalt.html"> | </a></li>
 				<li><a href="choresalt.html">Chores</a></li>
 				<li><a href="finance.html">Finance</a></li>
 				<li><a href="corkboard.html">Corkboard</a></li>
 				<li><a href="sos.html">SOS</a></li>	
->>>>>>> c42e55c69d3f0ae8977a72ddc80046f2fbd554bb
 			</ul>
 		</tr>
 	</table>
@@ -96,7 +89,7 @@
 						Col 1: Icon, Col 2: Headline Col 3: Data
 				 -->
 				<li>
-<<<<<<< HEAD
+
 					<table>
 						<tr>
 							<td>
@@ -116,12 +109,7 @@
 								<button class='post_comment'>post</button>
 							</td>
 						</tr>
-					</table>
-=======
-					<table><tr><td><img src="icon-mg.png"/></td><td><h3 class="headline">Cooking Dinner (7:30pm)</h3></td><td><h3 class="date">11/12</h3></td></tr><tr><td></td><td id="hidden-gone"><p>
- 				No Description Given</p></td></tr></table>
->>>>>>> c42e55c69d3f0ae8977a72ddc80046f2fbd554bb
-				</li>						
+					</table>					
 				<li>
 					<table><tr><td><img src="icon-pb.png"/></td><td><h3 class="headline">Rent due ($650)</h3></td><td><h3 class="date">11/05</h3></td></tr><tr><td></td><td id="hidden-gone"><p>
  				No Description Given</p></td></tr></table>
@@ -189,148 +177,119 @@
 	
 <script src="jquery-1.10.2.js"></script>
 <script>
-<<<<<<< HEAD
-	$( document ).ready(function() {
+        $( document ).ready(function() {
  
-	
-		$('#feed li table tr:nth-child(2) td').hide();			
-=======
-	$( document ).ready(function() {
- 			
->>>>>>> c42e55c69d3f0ae8977a72ddc80046f2fbd554bb
+        
+                $('#feed li table tr:nth-child(2) td').hide();                        
 
-		$("#note_button").click(function(event) {
-			var inputBox= $("<li>", {
-				html: "<input id=note_text></input>" +
-				"<button id = 'post' type = 'button'>post</button>"+
-				"<button id = 'cancel' type = 'button'>X</button>"
-				
-			});
-			inputBox.prependTo("#note_list");
-			$("#post").click(function(event) {
-    			var usrInput = $('#note_text').val();
+                $("#note_button").click(function(event) {
+                        var inputBox= $("<li>", {
+                                html: "<input id=note_text></input>" +
+                                "<button id = 'post' type = 'button'>post</button>"+
+                                "<button id = 'cancel' type = 'button'>X</button>"
+                                
+                        });
+                        inputBox.prependTo("#note_list");
+                        $("#post").click(function(event) {
+                            var usrInput = $('#note_text').val();
 
-    			inputBox.html("<p>"+usrInput+"</p>");
-    		});
-    		$("#cancel").click(function(event) {
-    			inputBox.remove();
- 			});
-		});
+                            inputBox.html("<p>"+usrInput+"</p>");
+                    });
+                    $("#cancel").click(function(event) {
+                            inputBox.remove();
+                         });
+                });
         
         $("#a_button").click(function(event) {
             $('#postToFeed').empty();
 
-        	var inputBox = $( "<li>", {
-        	
-    			html: "<table><tr><td><img src='icon-rg.png'/></td>" +
-    			
-    			"<td><p>Title</p></td>" +
-    			"<td><form><textarea id = 'a_text' rows='2' cols='10'></textarea></td></tr>" +
-    			
-    			"<tr><td></td><td>Description</td>" +
-    			
-    			"<td><form><textarea id = 'a_info' rows='4' cols = '50'></textarea></td></tr>" +
-    			"<tr><td><button id = 'post' type = 'button'> post </button></td>" +
-    			"<td><button id = 'cancel' type = 'button'> cancel </button></tr></table>"
-    		});
-    		
-    		inputBox.prependTo('#postToFeed');
-    		
-    		
-    		$("#post").click(function(event) {
-    			var usrInput = $('#a_text').val();
-    			
-    			var descrip = $('#a_info').val();
-    			if(!descrip){
-    				descrip = "No description given";
-    			}
-    			var d = new Date();
-				var month = d.getMonth()+1;
-				var day = d.getDate();
-				var output = (month<10 ? '0' : '') + month + '/' +
-    				(day<10 ? '0' : '') + day;
-<<<<<<< HEAD
+                var inputBox = $( "<li>", {
+                
+                            html: "<table><tr><td><img src='icon-rg.png'/></td>" +
+                            
+                            "<td><p>Title</p></td>" +
+                            "<td><form><textarea id = 'a_text' rows='2' cols='10'></textarea></td></tr>" +
+                            
+                            "<tr><td></td><td>Description</td>" +
+                            
+                            "<td><form><textarea id = 'a_info' rows='4' cols = '50'></textarea></td></tr>" +
+                            "<tr><td><button id = 'post' type = 'button'> post </button></td>" +
+                            "<td><button id = 'cancel' type = 'button'> cancel </button></tr></table>"
+                    });
+                    
+                    inputBox.prependTo('#postToFeed');
+                    
+                    
+                    $("#post").click(function(event) {
+                            var usrInput = $('#a_text').val();
+                            
+                            var descrip = $('#a_info').val();
+                            if(!descrip){
+                                    descrip = "No description given";
+                            }
+                            var d = new Date();
+                                var month = d.getMonth()+1;
+                                var day = d.getDate();
+                                var output = (month<10 ? '0' : '') + month + '/' +
+                                    (day<10 ? '0' : '') + day;
 
 
- 				$("#feed").prepend("<li><table><tr><td><img src='icon-rg.png'/></td><td><h3 class='headline'>" +
-=======
-    				
+                                 $("#feed").prepend("<li><table><tr><td><img src='icon-rg.png'/></td><td><h3 class='headline'>" +
+                                 
+                                        usrInput + "</h3></td><td><h3 class='date'>" + output + "</h3></td></tr><tr><td></td><td><p>" +
+                                 
+                                        descrip + "</p></td></tr>"+ 
+                                        "<tr><td></td><td><ul class='comment_list'></ul></td></tr>"+
+                                        "<tr><td></td><td><img src='icon-rg.png'/>"+
+                                        "<textarea id = 'comment' rows='2' cols = '40'></textarea>"+
+                                        "<button class='post_comment'>post</button></td></tr>"+
+                                        "</table></li>");
+                                 
+                                        $("#feed li:nth-child(" + 1 + ") tr:nth-child(2) td").hide();
+                                 
+                                        $('#postToFeed').empty();
 
+                                 
+                         });
 
- 				$("#feed").prepend("<li><table><tr><td><img src='icon-rg.png'/></td><td><h3 class='headline'>" +
->>>>>>> c42e55c69d3f0ae8977a72ddc80046f2fbd554bb
- 				
-					usrInput + "</h3></td><td><h3 class='date'>" + output + "</h3></td></tr><tr><td></td><td><p>" +
- 				
-<<<<<<< HEAD
-					descrip + "</p></td></tr>"+ 
-					"<tr><td></td><td><ul class='comment_list'></ul></td></tr>"+
-					"<tr><td></td><td><img src='icon-rg.png'/>"+
-					"<textarea id = 'comment' rows='2' cols = '40'></textarea>"+
-					"<button class='post_comment'>post</button></td></tr>"+
-					"</table></li>");
-=======
-					descrip + "</p></td></tr></table></li>");
->>>>>>> c42e55c69d3f0ae8977a72ddc80046f2fbd554bb
- 				
-					$("#feed li:nth-child(" + 1 + ") tr:nth-child(2) td").hide();
- 				
-					$('#postToFeed').empty();
-
- 				
- 			});
-
- 			
- 			$("#cancel").click(function(event) {
-    			$('#postToFeed').empty();
- 			});
-<<<<<<< HEAD
- 		});
- 	
- 		
- 		$('.post_comment').click(function(event) {
- 			var input = $(this).parent().find('textarea').val();
- 			$(this).parent().parent().parent().find('.comment_list').prepend(
- 				"<li><img src='icon-rg.png'/>" + input + "</li>");
- 			$(this).parent().find('textarea').val("");
- 		});
- 				
- 		
- 		 
- 		$('#feed').on('click', 'li table tr:nth-child(1)', function() {
- 		
- 			var $this = $(this)
+                         
+                         $("#cancel").click(function(event) {
+                            $('#postToFeed').empty();
+                         });
+                 });
+         
+                 
+                 $('.post_comment').click(function(event) {
+                         var input = $(this).parent().find('textarea').val();
+                         $(this).parent().parent().parent().find('.comment_list').prepend(
+                                 "<li><img src='icon-rg.png'/>" + input + "</li>");
+                         $(this).parent().find('textarea').val("");
+                 });
+                                 
+                 
+                  
+                 $('#feed').on('click', 'li table tr:nth-child(1)', function() {
+                 
+                         var $this = $(this)
  
- 			var $clicked = $this.parent().find('tr:nth-child(2) td');			
- 			//var $clicked = $("#feed li:nth-child(" + (4) + ") tr:nth-child(2) td");
-=======
-
- 		});
- 			
- 		
- 		 
- 		$('#feed').on('click', 'li', function() {
- 			
- 			var $ind = $(this).index();
- 			
- 			var $clicked = $("#feed li:nth-child(" + ($ind + 1) + ") tr:nth-child(2) td");
->>>>>>> c42e55c69d3f0ae8977a72ddc80046f2fbd554bb
- 			
- 			if ($clicked.is(":visible")) {
- 				
- 				$clicked.hide();	
- 			
- 			}
- 			
- 			else {
- 				
- 				$clicked.show();
- 			
- 			}
- 			
- 			
- 		
- 		});
+                         var $clicked = $this.parent().find('tr:nth-child(2) td');                        
+                         //var $clicked = $("#feed li:nth-child(" + (4) + ") tr:nth-child(2) td");
+                         
+                         if ($clicked.is(":visible")) {
+                                 
+                                 $clicked.hide();        
+                         
+                         }
+                         
+                         else {
+                                 
+                                 $clicked.show();
+                         
+                         }
+                         
+                         
+                 
+                 });
     });
 </script>
 </body>
