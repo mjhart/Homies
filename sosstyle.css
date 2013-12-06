@@ -105,6 +105,11 @@ margin-left: 2%;
 #newsfeed h3 span {
 	font-size: 20px !important;
 }
+#newsfeed li:hover {
+	background-color: #000033;
+	color: white;
+	border-color: white;
+}
 #newsfeed li {
 	border-radius: 10px;
 	border-color: #000033;

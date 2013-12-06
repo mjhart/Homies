@@ -39,7 +39,7 @@
 					<p>I need someone to come pick me up ASAP, call me as soon as you get this!</p>
 				</li>
 				<li>
-					<p>I'm out and my phone is gonna die soon. Call me know so we can figure out a ride the car!</p>
+					<p>I'm out and my phone is gonna die soon. Call me now so we can figure out a ride home!</p>
 				</li>
 				<li>
 					<p> Is anyone home? </p>
@@ -63,6 +63,7 @@
  			var $ind = $(this).index();
  			var $par = $("#feed li:nth-child(" + ($ind + 1) + ") p").text();
  			$.get("http://localhost:8888/sendemail.php", { smessage: $par});
+ 			alert("Your message has been sent!");
        
  			
  			
