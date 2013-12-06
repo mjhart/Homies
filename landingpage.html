@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
 <style>
-body{background-color:#0fc4af;font:20px Tahoma;color:white;font-weight: normal;}
+body{background-color:#b8fff7;}
+#table{margin:auto;background-color:#0fc4af;font:25px Tahoma;color:white;font-weight: normal;padding:70px;padding-left:120px;padding-right:120px;border-radius:25px;text-align:center;}
+#here{text-decoration: none;color:#b8fff7;}
+a{text-decoration:none;color:black;}
+button{margin:auto;background-color:white;color:#0fc4af;border-style:4px solid;border-radius:10px;padding:5px 20px 5px 20px;border-right-color: black;}
+input{height:20px;width:180px;border-radius:5px;font-size:16px;}
+#fields{font-size:24px;margin:auto;}
 </style>
 <body>
-<table>
+<table id="table">
 <tr>
 	<td>
 	</td>
 	<td>
-		<img src="logo.png" height="300px;"/>
+		<center><img src="logo.png" height="230px;"/></center>
 	</td>
 	<td>
 	</td>
@@ -19,28 +25,25 @@ body{background-color:#0fc4af;font:20px Tahoma;color:white;font-weight: normal;}
 	</td>
 	<td>
 		<h3> Welcome to Homies! </h3>
-		<form method="post" action="https://www.authpro.com/auth/deluxe/" name="aform" target="_top">
 		<input type="hidden" name="action" value="login">
 		<input type="hidden" name="hide" value="">
 		<center>
-			<table>
-			<tr><td><font face="verdana,arial" size=-1>House Login:</font></td><td><input type="text" name="login"></td></tr>
-			<tr><td><font face="verdana,arial" size=-1>Your Login:</font></td><td><input type="text" name="login"></td></tr>
-			<tr><td><font face="verdana,arial" size=-1>Password:</font></td><td><input type="password" name="password"></td></tr>
+			<table id="fields">
+			<tr><td><font face="verdana,arial" size=2>House Login:</font></td><td><input type="text" name="login" placeholder="   30CushingSt"></td></tr>
+			<tr><td><font face="verdana,arial" size=2>Your Login:</font></td><td><input type="text" name="login" placeholder="   myusername"></td></tr>
+			<tr><td><font face="verdana,arial" size=2>Password:</font></td><td><input type="password" name="password" placeholder="   ******"></td></tr>
 			<tr>
 				<td>
-					<font face="verdana,arial" size=-1>&nbsp;</font>
+					<button><a href="homiesalt.html">Login</a></button>
 				</td>
 				<td>
-					<font face="verdana,arial" size=-1><input type="submit" value="Send"></font>
-				</td>
+					<button><a href="homiesalt.html">Sign up</a></button>
+				</td>				
 			</tr>
-		<tr><td colspan=2><font face="verdana,arial" size=-1>&nbsp;</font></td></tr>
-		<tr><td colspan=2><font face="verdana,arial" size=-1>Lost your username or password? Find it <a href="http://www.egotrip.in/">here</a>!</font></td></tr>
-		<tr><td colspan=2><font face="verdana,arial" size=-1></font></td></tr>
+		<tr><td colspan=2><font face="verdana,arial" size=2>&nbsp;</font></td></tr>
+		<tr><td colspan=2><font face="verdana,arial" size=2>Lost your username or password?<br>Find it <a id="here" href="#">here</a>!</font></td></tr>
+		<tr><td colspan=2><font face="verdana,arial" size=2></font></td></tr>
 		</table></center>
-		</form>
-
 	</td>
 	<td>
 	</td>
