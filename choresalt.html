@@ -140,24 +140,24 @@
 						Col 1: Icon, Col 2: Headline Col 3: Data
 				 -->
 				<li>
-					<table><tr><td id="hidden"><img src="icon-rg.png"/></td><td width="230px"><h3 class="headline">Cooking</h3></td><td><button id="select_button">SELECT</button></td></tr>
-					<tr><td></td><td id="hidden-gone"><p>Cook dinner for everyone</p><p>Set table</p></td></tr></table>
+					<table><tr><td ><img src="icon-mg.png"/></td><td width="230px"><h3 class="headline">Cooking</h3><h3>&#9663</h3></td><td><button id="select_button" class="hidden-gone">SELECT</button></td></tr>
+					<tr><td></td><td class="hidden-gone"><p>Cook dinner for everyone</p><p>Set table</p></td></tr></table>
 				</li>	
 				<li>
-					<table><tr><td id="hidden"><img src="icon-rg.png"/></td><td width="230px"><h3 class="headline">Kitchen</h3></td><td><button id="select_button">SELECT</button></td></tr><tr><td></td><td id="hidden-gone"><p>Put dishes in dishwasher</p><p>Wipe down counters</p><p>Keep the fridge organized</p></td></tr></table>
+					<table><tr><td><img src="icon-rg2.png"/></td><td width="230px"><h3 class="headline">Kitchen</h3><h3>&#9663</h3></td><td><button id="select_button" class="hidden-gone">SELECT</button></td></tr><tr><td></td><td class="hidden-gone"><p>Put dishes in dishwasher</p><p>Wipe down counters</p><p>Keep the fridge organized</p></td></tr></table>
 				</li>	
 				<li>
-					<table><tr><td id="hidden"><img src="icon-rg.png"/></td><td width="230px"><h3 class="headline">Trash</h3></td><td><button id="select_button">SELECT</button></td></tr><tr><td></td><td id="hidden-gone"><p>Collect trash from all trashcans</p><p>Take out the trash</p></td></tr></table>
+					<table><tr><td><img src="icon-pb.png"/></td><td width="230px"><h3 class="headline">Trash</h3><h3>&#9663</h3></td><td><button id="select_button" class="hidden-gone">SELECT</button></td></tr><tr><td></td><td class="hidden-gone"><p>Collect trash from all trashcans</p><p>Take out the trash</p></td></tr></table>
 				</li>
 				<li>
-					<table><tr><td id="hidden"><img src="icon-rg.png"/></td><td width="230px"><h3 class="headline">Bathrom</h3></td><td><button id="select_button">SELECT</button></td></tr><tr><td></td><td id="hidden-gone"><p>Clean toilets and showers</p><p>Wipe down bathroom counters</p></td></tr></table>
+					<table><tr><td id="hidden"><img src="icon-rg.png"/></td><td width="230px"><h3 class="headline">Bathrooms</h3><h3>&#9663</h3></td><td><button id="select_button">SELECT</button></td></tr><tr><td></td><td class="hidden-gone"><p>Clean toilets and showers</p><p>Wipe down bathroom counters</p></td></tr></table>
 				</li>
 				<li>
-					<table><tr><td id="hidden"><img src="icon-rg.png"/></td><td width="230px"><h3 class="headline">Groceries</h3></td><td><button id="select_button">SELECT</button></td></tr><tr><td></td><td id="hidden-gone"><p>Buy groceries for the house</p></td></tr></table>
+					<table><tr><td><img src="icon-cb.png"/></td><td width="230px"><h3 class="headline">Groceries</h3><h3>&#9663</h3></td><td><button id="select_button" class="hidden-gone">SELECT</button></td></tr><tr><td></td><td class="hidden-gone"><p>Buy groceries for the house</p></td></tr></table>
 				</li>
 				
 				<li>
-					<table><tr><td id="hidden"><img src="icon-rg.png"/></td><td width="230px"><h3 class="headline">Dog Care</h3></td><td><button id="select_button">SELECT</button></td></tr><tr><td></td><td id="hidden-gone"><p>Take the dog for walks three times a day</p><p>Feed the dog twice a day</p></td></tr></table>
+					<table><tr><td id="hidden"><img src="icon-rg.png"/></td><td width="230px"><h3 class="headline">Dog Care</h3><h3>&#9663</h3></td><td><button id="select_button">SELECT</button></td></tr><tr><td></td><td class="hidden-gone"><p>Take the dog for walks three times a day</p><p>Feed the dog twice a day</p></td></tr></table>
 				</li>
 				
 					
@@ -186,34 +186,60 @@
 	$( document ).ready(function() {
 		
 		$("#feed > li > table > tbody > tr > td").on('click', function() {
-        var $ind = $(this).index();
-        var $tem = (((($(this).parent()).parent()).parent()).parent()).index()
+        	var $ind = $(this).index();
+        	var $tem = (((($(this).parent()).parent()).parent()).parent()).index();
+        	var $clickedArrow = $(this).find('h3:nth-child(2)');                        
+                              
+
         if ($ind != 2) {
-    
+
         	if ($ind == 0) {
-        		var $unSelect = $("#feed li:nth-child(" + ($tem + 1) + ") tr:nth-child(1) td:nth-child(1)");
-        		var $reShow = $("#feed li:nth-child(" + ($tem + 1) + ") tr:nth-child(1) td:nth-child(3)");
+        		if ($tem == 3 || $tem == 5) {
 
-        		if ($unSelect.is(":visible")) {
-        			$(this).css("visibility", "hidden");
-        			$reShow.show();
+        			var $unSelect = $("#feed li:nth-child(" + ($tem + 1) + ") tr:nth-child(1) td:nth-child(1)");
+        			var $reShow = $("#feed li:nth-child(" + ($tem + 1) + ") tr:nth-child(1) td:nth-child(3)");
 
+        			if ($unSelect.is(":visible")) {
+        				$(this).css("visibility", "hidden");
+        				$reShow.show();
+
+        			}
         		}
         	}
         	else {	
         		var $toShow = $("#feed li:nth-child(" + ($tem + 1) + ") tr:nth-child(2) td:nth-child(2)");
         		if ($toShow.is(":visible")) {
- 				$toShow.hide();	
+ 					$toShow.hide();	
+ 					$clickedArrow.html("&#9663");       
+
  				}
  				else {
  					$toShow.show();
+ 					$clickedArrow.html("&#9659");
  				}
         	}
 
         }
         else {
-        	$(this).hide()
-        	$("#feed li:nth-child(" + ($tem + 1) + ") tr:nth-child(1) td:nth-child(1)").css("visibility", "visible");
+        	var $unSelectOne = $("#feed li:nth-child(4) tr:nth-child(1) td:nth-child(1)");
+        	var $reShowOne = $("#feed li:nth-child(4) tr:nth-child(1) td:nth-child(3)");
+        	var $unSelectTwo = $("#feed li:nth-child(6) tr:nth-child(1) td:nth-child(1)");
+        	var $reShowTwo = $("#feed li:nth-child(6) tr:nth-child(1) td:nth-child(3)");
+          	if ($tem == 3) {
+        		$unSelectOne.css("visibility", "visible");
+				$reShowOne.hide();
+				$unSelectTwo.css("visibility", "hidden");
+				$reShowTwo.show();
+        	}
+        	else if ($tem == 5) {
+        		$unSelectOne.css("visibility", "hidden");
+				$reShowOne.show();
+				$unSelectTwo.css("visibility", "visible");
+				$reShowTwo.hide();
+        		
+        	}
+   		
+
         }
    
 
