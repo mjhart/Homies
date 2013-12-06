@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Homies</title>
+<link href="altstyle.css" rel="stylesheet" type="text/css"/>
+<link href="logo.png" rel="SHORTCUT ICON">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
+</head>
+<style>
+body {font-family: Tahoma;}
+h1 {position: relative; left:470px;}
+h2 {padding-left: 30px; position:relative; left: 100px; top:40px;}
+ol {padding-left: 30px; position:relative; left: 100px; top:45px;}
+li {font-size: 22px; line-height: 1.4;}
+table {margin-left: 120px;}
+#shopping-list{background-color: white;vertical-align: top;padding: 10px;background-image:url("pad.jpg");width: 400px;height:400px;}
+fieldset{border:none;padding-left: 30px; position:relative; left: 100px;top:-35px;}
+#addItem { height: 22px;font-size: 18px;}
+</style>
+<script>
+jQuery(function($){
+    $('input[name="add"]').click(function() {
+        if($('#resultList li').length < 10)
+        {    value = $('input[name="addItem"]').val();
+             $('ol li:last').after("<li>" + value + "</li>");
+             $('input[name="addItem"]').val(""); }
+        if($('#resultList li').length == 10)
+        {   $('input[name="addItem"]').css("display", "none");
+            $('input[name="add"]').css("display", "none"); }
+    });  
+});  
+</script>
+<script>
+jQuery(function($){
+    $('input[name="erase"]').click(function() {
+        if($('#resultList li').length < 10) {
+             $('ol li:last').remove(); }
+   		 });  
+	});  	
+</script>
+<body>
+	<table> 
+		<tr colspan="3">
+		<!-- Nav Bar -->
+			<ul class="nav-bar"> <!-- Nav Links -->
+				<li><a href="homiesalt.html"><img id="logo" style="width=20px;" src="logo.png"/>Homies</a></li>
+				<li><a href="homiesalt.html"> | </a></li>
+				<li><a href="choresalt.html">Chores</a></li>
+				<li><a href="finance.html">Finance</a></li>
+				<li><a href="corkboard.html" class="active">Corkboard</a></li>
+				<li><a href="sos.html" >SOS</a></li>	
+			</ul>
+		</tr>
+		<tr colspan="4">
+		<h1>Corkboard</h1>
+		<td id="shopping-list">
+			<h2> Shopping List </h2>
+			<ol>
+				<li> Swiffer pods</li>
+				<li> Eggs </li>
+				<li> Paper towels</li>
+			</ol>
+		<br>
+		<br>
+		<br>	
+		<fieldset id="itemList">
+		    <input type="text" id="addItem" name="addItem">
+		    <input type="button" name="add" value="add">
+		    <input type="button" name="erase" value="erase">		    
+		</fieldset>
+		</td>
+		<td>
+			<iframe src="slideshow.html" width="450px;" height="480px;" style="margin-left:10px;">
+		</td>
+		</tr> 
+	</table>
+</body>
+
+</html>

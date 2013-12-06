@@ -11,11 +11,20 @@
 		<tr colspan="3">
 		<!-- Nav Bar -->
 			<ul class="nav-bar"> <!-- Nav Links -->
+<<<<<<< HEAD
 				<li><a href="homiesalt.html"><img id="logo" style="width=20px;" src="logo.png"/>Homies</a></li>
 				<li><a href "homiesalt.html"> | </a></li>
 				<li><a href="choresalt.html">Chores</a></li>
 				<li><a href="finance.html">Finance</a></li>
 				
+=======
+				<li><a href="homiesalt.html" class="active"><img id="logo" style="width=20px;" src="logo.png"/>Homies</a></li>
+				<li><a href="homiesalt.html"> | </a></li>
+				<li><a href="choresalt.html">Chores</a></li>
+				<li><a href="finance.html">Finance</a></li>
+				<li><a href="corkboard.html">Corkboard</a></li>
+				<li><a href="sos.html">SOS</a></li>	
+>>>>>>> c42e55c69d3f0ae8977a72ddc80046f2fbd554bb
 			</ul>
 		</tr>
 	</table>
@@ -87,6 +96,7 @@
 						Col 1: Icon, Col 2: Headline Col 3: Data
 				 -->
 				<li>
+<<<<<<< HEAD
 					<table>
 						<tr>
 							<td>
@@ -107,6 +117,10 @@
 							</td>
 						</tr>
 					</table>
+=======
+					<table><tr><td><img src="icon-mg.png"/></td><td><h3 class="headline">Cooking Dinner (7:30pm)</h3></td><td><h3 class="date">11/12</h3></td></tr><tr><td></td><td id="hidden-gone"><p>
+ 				No Description Given</p></td></tr></table>
+>>>>>>> c42e55c69d3f0ae8977a72ddc80046f2fbd554bb
 				</li>						
 				<li>
 					<table><tr><td><img src="icon-pb.png"/></td><td><h3 class="headline">Rent due ($650)</h3></td><td><h3 class="date">11/05</h3></td></tr><tr><td></td><td id="hidden-gone"><p>
@@ -175,10 +189,15 @@
 	
 <script src="jquery-1.10.2.js"></script>
 <script>
+<<<<<<< HEAD
 	$( document ).ready(function() {
  
 	
 		$('#feed li table tr:nth-child(2) td').hide();			
+=======
+	$( document ).ready(function() {
+ 			
+>>>>>>> c42e55c69d3f0ae8977a72ddc80046f2fbd554bb
 
 		$("#note_button").click(function(event) {
 			var inputBox= $("<li>", {
@@ -230,18 +249,29 @@
 				var day = d.getDate();
 				var output = (month<10 ? '0' : '') + month + '/' +
     				(day<10 ? '0' : '') + day;
+<<<<<<< HEAD
 
 
  				$("#feed").prepend("<li><table><tr><td><img src='icon-rg.png'/></td><td><h3 class='headline'>" +
+=======
+    				
+
+
+ 				$("#feed").prepend("<li><table><tr><td><img src='icon-rg.png'/></td><td><h3 class='headline'>" +
+>>>>>>> c42e55c69d3f0ae8977a72ddc80046f2fbd554bb
  				
 					usrInput + "</h3></td><td><h3 class='date'>" + output + "</h3></td></tr><tr><td></td><td><p>" +
  				
+<<<<<<< HEAD
 					descrip + "</p></td></tr>"+ 
 					"<tr><td></td><td><ul class='comment_list'></ul></td></tr>"+
 					"<tr><td></td><td><img src='icon-rg.png'/>"+
 					"<textarea id = 'comment' rows='2' cols = '40'></textarea>"+
 					"<button class='post_comment'>post</button></td></tr>"+
 					"</table></li>");
+=======
+					descrip + "</p></td></tr></table></li>");
+>>>>>>> c42e55c69d3f0ae8977a72ddc80046f2fbd554bb
  				
 					$("#feed li:nth-child(" + 1 + ") tr:nth-child(2) td").hide();
  				
@@ -254,6 +284,7 @@
  			$("#cancel").click(function(event) {
     			$('#postToFeed').empty();
  			});
+<<<<<<< HEAD
  		});
  	
  		
@@ -272,6 +303,18 @@
  
  			var $clicked = $this.parent().find('tr:nth-child(2) td');			
  			//var $clicked = $("#feed li:nth-child(" + (4) + ") tr:nth-child(2) td");
+=======
+
+ 		});
+ 			
+ 		
+ 		 
+ 		$('#feed').on('click', 'li', function() {
+ 			
+ 			var $ind = $(this).index();
+ 			
+ 			var $clicked = $("#feed li:nth-child(" + ($ind + 1) + ") tr:nth-child(2) td");
+>>>>>>> c42e55c69d3f0ae8977a72ddc80046f2fbd554bb
  			
  			if ($clicked.is(":visible")) {
  				
