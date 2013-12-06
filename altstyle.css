@@ -353,6 +353,11 @@ button {
 	margin-top: -10px;
 }
 
+#you-owe {
+	position:relative;
+	top:-200px;
+}
+
 .bill-type{
 	text-align: left;
 	display: inline-block;
