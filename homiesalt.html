@@ -11,9 +11,9 @@
 		<tr colspan="3">
 		<!-- Nav Bar -->
 			<ul class="nav-bar"> <!-- Nav Links -->
-				<li><a href="homies.html"><img id="logo" style="width=20px;" src="logo.png"/>Homies</a></li>
-				<li><a href "homies.html"> | </a></li>
-				<li><a href="chores.html">Chores</a></li>
+				<li><a href="homiesalt.html"><img id="logo" style="width=20px;" src="logo.png"/>Homies</a></li>
+				<li><a href "homiesalt.html"> | </a></li>
+				<li><a href="choresalt.html">Chores</a></li>
 				<li><a href="finance.html">Finance</a></li>
 				
 			</ul>
@@ -87,8 +87,26 @@
 						Col 1: Icon, Col 2: Headline Col 3: Data
 				 -->
 				<li>
-					<table><tr><td><img src="icon-mg.png"/></td><td><h3 class="headline">Cooking Dinner (7:30pm)</h3></td><td><h3 class="date">11/12</h3></td></tr><tr><td></td><td id="hidden-gone"><p>
- 				No Description Given</p></td></tr></table>
+					<table>
+						<tr>
+							<td>
+								<img src="icon-mg.png"/></td><td><h3 class="headline">Cooking Dinner (7:30pm)</h3>
+							</td>
+							<td>
+								<h3 class="date">11/12</h3></td></tr><tr><td></td><td id="hidden-gone">
+								<p>
+ 				No Description Given</p>
+							</td>
+						</tr>
+						<tr><td></td><td><ul class='comment_list'></ul></td></tr>
+						<tr>
+							<td></td>
+							<td><img src='icon-rg.png'/>
+								<textarea id = 'comment' rows='2' cols = '40'></textarea>
+								<button class='post_comment'>post</button>
+							</td>
+						</tr>
+					</table>
 				</li>						
 				<li>
 					<table><tr><td><img src="icon-pb.png"/></td><td><h3 class="headline">Rent due ($650)</h3></td><td><h3 class="date">11/05</h3></td></tr><tr><td></td><td id="hidden-gone"><p>
@@ -127,7 +145,7 @@
 	</div>
 
 	<!-- Money management -->
-	<div id="money-manager">
+	<div class="money-manager">
 		<h3> Money Manager</h3>
 		<div class="scroll_box">
 			<ul>
@@ -158,7 +176,9 @@
 <script src="jquery-1.10.2.js"></script>
 <script>
 	$( document ).ready(function() {
- 			
+ 
+	
+		$('#feed li table tr:nth-child(2) td').hide();			
 
 		$("#note_button").click(function(event) {
 			var inputBox= $("<li>", {
@@ -202,19 +222,26 @@
     			var usrInput = $('#a_text').val();
     			
     			var descrip = $('#a_info').val();
+    			if(!descrip){
+    				descrip = "No description given";
+    			}
     			var d = new Date();
 				var month = d.getMonth()+1;
 				var day = d.getDate();
 				var output = (month<10 ? '0' : '') + month + '/' +
     				(day<10 ? '0' : '') + day;
-    				
 
 
  				$("#feed").prepend("<li><table><tr><td><img src='icon-rg.png'/></td><td><h3 class='headline'>" +
  				
 					usrInput + "</h3></td><td><h3 class='date'>" + output + "</h3></td></tr><tr><td></td><td><p>" +
  				
-					descrip + "</p></td></tr></table></li>");
+					descrip + "</p></td></tr>"+ 
+					"<tr><td></td><td><ul class='comment_list'></ul></td></tr>"+
+					"<tr><td></td><td><img src='icon-rg.png'/>"+
+					"<textarea id = 'comment' rows='2' cols = '40'></textarea>"+
+					"<button class='post_comment'>post</button></td></tr>"+
+					"</table></li>");
  				
 					$("#feed li:nth-child(" + 1 + ") tr:nth-child(2) td").hide();
  				
@@ -227,16 +254,24 @@
  			$("#cancel").click(function(event) {
     			$('#postToFeed').empty();
  			});
-
  		});
- 			
+ 	
+ 		
+ 		$('.post_comment').click(function(event) {
+ 			var input = $(this).parent().find('textarea').val();
+ 			$(this).parent().parent().parent().find('.comment_list').prepend(
+ 				"<li><img src='icon-rg.png'/>" + input + "</li>");
+ 			$(this).parent().find('textarea').val("");
+ 		});
+ 				
  		
  		 
- 		$('#feed').on('click', 'li', function() {
- 			
- 			var $ind = $(this).index();
- 			
- 			var $clicked = $("#feed li:nth-child(" + ($ind + 1) + ") tr:nth-child(2) td");
+ 		$('#feed').on('click', 'li table tr:nth-child(1)', function() {
+ 		
+ 			var $this = $(this)
+ 
+ 			var $clicked = $this.parent().find('tr:nth-child(2) td');			
+ 			//var $clicked = $("#feed li:nth-child(" + (4) + ") tr:nth-child(2) td");
  			
  			if ($clicked.is(":visible")) {
  				
@@ -253,11 +288,7 @@
  			
  		
  		});
- 	
- 
     });
 </script>
-
 </body>
-
 </html>

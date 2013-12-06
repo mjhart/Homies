@@ -1,16 +1,16 @@
 #finance {
 	margin-top: 10px;
-	margin-left: auto;
-	margin-right: auto;
-	height: 200px;
+	margin-left: 10px;
+	margin-right: 10px;
+	height: auto;
 	width: 600px;
 	background-color: white;
 	border-radius: 5px;
 	//text-align: center;
 	font-family: Arial;
 	padding: 10px;
-	float: left;
-	display: none;
+	/*float: left;*/
+	display: inline-block;
 }
 
 #button_box{
@@ -59,4 +59,15 @@
 	margin:0;
 	padding:10px;
 	background-color: white;
+}
+
+#incoming{
+	border-radius: 5px;
+	width: 600px;
+}
+.money-manager .scroll-box {
+	height: auto;
+}
+#button_box h3 {
+	display: inline;
 }

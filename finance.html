@@ -12,9 +12,9 @@
 		<tr colspan="3">
 		<!-- Nav Bar -->
 			<ul class="nav-bar"> <!-- Nav Links -->
-				<li><a href="homies.html"><img id="logo" style="width=20px;" src="logo.png"/>Homies</a></li>
+				<li><a href="homiesalt.html"><img id="logo" style="width=20px;" src="logo.png"/>Homies</a></li>
 				<li><a href "homies.html"> | </a></li>
-				<li><a href "chores.html">Chores</a></li>
+				<li><a href "altchores.html">Chores</a></li>
 				<li><a href "finance.html">Finance</a></li>
 			</ul>
 		</tr>
@@ -80,11 +80,11 @@
 	<!-- finance box-->
 	<div id="finance">
 		<div id="button_box">
+			<h3>New Item</h3>
 			<form id="radio_type" action="">
 				<input type="radio" id="bill" name="debt" value="Bill">Bill
 				<input type="radio" id="iou" name="debt" value="IOU" checked>IOU
 			</form>
-			<button id="close_button">X</button>
 			<button id="post_button">+</button>
 		</div>
 		<div id="text_box">
@@ -92,42 +92,43 @@
 		</div>
 		<table>
 			<tr><td>Total:</td><td><input id="total" type="text" placeholder="$"></td></tr>
-			<tr><td>Matt:</td><td><input id="amount1" type="text" placeholder="$"></td></tr>
-			<tr><td>Wendy:</td><td><input id="amount2" type="text" placeholder="$"></td></tr>
-			<tr><td>Luke:</td><td><input id="amount3" type="text" placeholder="$"></td></tr>
+			<tr><td>Phoebe B:</td><td><input id="amount1" type="text" placeholder="$"></td></tr>
+			<tr><td>Monica G:</td><td><input id="amount2" type="text" placeholder="$"></td></tr>
+			<tr><td>Joey T:</td><td><input id="amount3" type="text" placeholder="$"></td></tr>
+			<tr><td>Ross G:</td><td><input id="amount4" type="text" placeholder="$"></td></tr>
+			<tr><td>Chandler B:</td><td><input id="amount5" type="text" placeholder="$"></td></tr>
 		</table>
 	</div>
 	
 		
 	<!--things to check off-->
-	<div id="money-manager">
-		<h3>You were payed</h3>
+	<div class="money-manager" id="incoming">
+		<h3>IOU's</h3>
 		<div class="scroll_box">
-			<ul>
+			<ul id= income_list>
 				<li>
-					<p> $20 <br> <span> You owe Monica for Dinner </span></p>				
+					<span>$20</span>
+					<button class="accept_button">Accept</button>
+					<button class="reject_button">Reject</button>
+					<p><span>Monica paid for: Lunch</span></p>			
 				</li>
 				<li>
-					<p> $650 <br> <span> Rent due in 2 days </span></p>				
+					<span>$5</span>
+					<button class="accept_button">Accept</button>
+					<button class="reject_button">Reject</button>
+					<p><span>Ross paid for: Breaking your headphones</span></p>				
 				</li>
 				<li>
-					<p> $24.63 <br> <span> You owe Monica for Cable </span></p>				
-				</li>
-				<li>
-					<p> $25 <br> <span> You owe Joey for Alcohol </span></p>				
-				</li>	
-				<li>
-					<p> $23.33 <br> <span> You owe Monica for Electric </span></p>				
-				</li>
-				<li>
-					<p> $100 <br> <span> You owe Ross for Losing a bet </span></p>				
-				</li>																								
+					<span>$35</span>
+					<button class="accept_button">Forgive</button>
+					<p><span>Joey owes you for: Losing a bet</span></p>				
+				</li>																							
 			</ul>
 		</div>
 	</div>
 	
-	<!-- owed money-->
-	<div id="money-manager">
+	<!-- owe money to others-->
+	<div class="money-manager">
 		<h3>You Owe</h3>
 		<div class="scroll_box">
 			<ul>
@@ -159,56 +160,141 @@
 		</div>
 	</div>
 
-	
 <script src="jquery-1.10.2.js"></script>
 <script>
 $(document).ready( function(){ 
-		alert('hello');
-		
+		var meItem;
 		$("#iou").change(function() {
 				$("#text_box").html("<textarea id='txta1' placeholder='Description'></textarea>");
+				meItem.remove();
 		});
 		
 		$("#bill").change(function() {
 				$("#text_box").html(
-			"<tr><td>Title:</td><td><input id='title' type='text'></td></tr>" +
-			"<tr><td>Date:</td><td><input id='date' type='text'></td></tr>" +
-			"<tr><td>Recurring:</td><td><input id='recurrance' type='text'></td></tr>" +
-		"</table>");
+					"<tr><td>Title:</td><td><input id='title' type='text'></td></tr>" +
+					"<tr><td>Date:</td><td><input id='date' type='text'></td></tr>" +
+					"<tr><td>Recurring:</td><td><input id='recurrance' type='text'></td></tr>" +
+					"</table>");
+				meItem = $('<tr>', {
+					html: '<td>Rachel G:</td><td><input id="amount6" type="text" placeholder="$"></td>'
+				});
+				meItem.appendTo('#finance table');
 		});
 		
 		$("#total").change(function() {
 			var sum = Number($(this).val());
 			sum = Number($("#total").val());
-			var div = sum/3;
-			$("#amount1").val(div);
-			$("#amount2").val(div);
-			$("#amount3").val(div);
+			var myArray = $('#finance table tr:not(:first)');
+			var rowCount = $('#finance table tr').length-1;
+			var div = sum/rowCount;
+			$('#finance table > tbody  > tr:not(:first)').each(function() {
+				var $this = $(this)
+				$this.find('input').val(div);
+			});
 		});
 		
 		$("#amount1").change(function() {
-			var sum = Number($(this).val());
-			sum = sum + Number($("#amount2").val());
-			sum = sum + Number($("#amount3").val());
-			$("#total").val(sum);
+			update();
 		});
-		
 		$("#amount2").change(function() {
-			var sum = Number($(this).val());
-			sum = sum + Number($("#amount1").val());
-			sum = sum + Number($("#amount3").val());
-			$("#total").val(sum);
+			update();
 		});
 		
 		$("#amount3").change(function() {
-			var sum = Number($(this).val());
-			sum = sum + Number($("#amount2").val());
-			sum = sum + Number($("#amount1").val());
-			$("#total").val(sum);
+			update();
+		});
+		$("#amount4").change(function() {
+			update();
+		});
+		$("#amount5").change(function() {
+			update();
+		});
+		$("#amount6").change(function() {
+			update();
 		});
 		
+		function update() {
+			var sum = Number($('#amount1').val());
+			sum = sum + Number($("#amount2").val());
+			sum = sum + Number($("#amount3").val());
+			sum = sum + Number($("#amount4").val());
+			sum = sum + Number($("#amount5").val());
+			if($('#finance table tr').length===7) {
+				sum = sum + Number($("#amount6").val());
+			}
+			$("#total").val(sum);
+		}
+		
 		$('.paid_button').click(function(event) {
-			$(this).parent().hide();
+			$(this).parent().remove();
+		});
+		
+		$('#post_button').click(function(event) {
+			var radio = $('#iou');
+			if(radio.is(':checked')) {
+				var amt1 = Number($("#amount1").val());
+				var amt2 = Number($("#amount2").val());
+				var amt3 = Number($("#amount3").val());
+				var amt4 = Number($("#amount4").val());
+				var amt5 = Number($("#amount5").val());
+				var amt6 = Number($("#amount6").val());
+				var text = $('#txta1').val();
+				if(amt1 > 0) {
+					var newItem = $( "<li>", {
+        	
+    					html: '<span>$'+amt1+'</span>'+
+							'<button class="accept_button">Forgive</button>'+
+							'<p><span>Phoebe B owes you for: '+ text+ '</span></p>'
+    				});
+    		
+    				newItem.prependTo('#income_list');
+				}
+				if(amt2 > 0) {
+					var newItem = $( "<li>", {
+        	
+    					html: '<span>$'+amt2+'</span>'+
+							'<button class="accept_button">Forgive</button>'+
+							'<p><span>Monica G owes you for: '+ text+ '</span></p>'
+    				});
+    		
+    				newItem.prependTo('#income_list');
+				}
+				if(amt3 > 0) {
+					var newItem = $( "<li>", {
+        	
+    					html: '<span>$'+amt3+'</span>'+
+							'<button class="accept_button">Forgive</button>'+
+							'<p><span>Joey T owes you for: '+ text+ '</span></p>'
+    				});
+    				newItem.prependTo('#income_list');
+				}
+				if(amt4 > 0) {
+					var newItem = $( "<li>", {
+        	
+    					html: '<span>$'+amt4+'</span>'+
+							'<button class="accept_button">Forgive</button>'+
+							'<p><span>Ross G owes you for: '+ text+ '</span></p>'
+    				});
+    				newItem.prependTo('#income_list');
+				}
+				if(amt5 > 0) {
+					var newItem = $( "<li>", {
+        	
+    					html: '<span>$'+amt5+'</span>'+
+							'<button class="accept_button">Forgive</button>'+
+							'<p><span>Chandler B owes you for: '+ text+ '</span></p>'
+    				});
+    				newItem.prependTo('#income_list');
+				}
+			}
+		});
+		
+		$('.accept_button').click(function(event) {
+			$(this).parent().remove();
+		});
+		
+		$('.reject_button').click(function(event) {
+			$(this).parent().find('button').remove();
 		});
 	});
 </script>

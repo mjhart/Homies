@@ -285,29 +285,29 @@ margin-left: 2%;
 
 }
 
-#money-manager {
+.money-manager {
 	float: left;
-	padding: 20px;
+	padding: 10px;
 	margin: 10px;
 	background-color: white;
 	border-radius: 10px;
 	/*overflow: scroll;*/
-	//height: 680px;
-	padding-right: 20px;
+	/*height: 680px;*/
+	/*padding-right: 20px;*/
 	padding-left: 10px;
 }
 
-#money-manager ul {
+.money-manager ul {
 	background-color: white;
 	margin-left: -5px;
 }
 
-#money-manager h3 {
+.money-manager h3 {
 	font: 22px Tahoma;
 	text-align: center;
 }
 
-#money-manager li {
+.money-manager li {
 	text-align: center;
 	background-color: white;
 	margin-left: -25px;
@@ -320,11 +320,11 @@ margin-left: 2%;
 	padding: 3px;
 }
 
-#money-manager p {
+.money-manager p {
 	font-size: 20px;
 }
 
-#money-manager p span {
+.money-manager p span {
 	font-size: 14px;
 }
 
@@ -358,4 +358,17 @@ button {
 	text-align: right;
 	display: inline-block;
 }
+.accept_button{
+	margin-top:5px;
+}
+.reject_button{
+	margin-top:5px;
+}
 
+.paid_button{
+	margin-top:5px;
+}
+
+#newsfeed ul.comment_list{
+	background-color: #eee; 
+}
