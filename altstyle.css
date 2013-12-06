@@ -26,6 +26,9 @@ padding-bottom: 5px;
 background-color: #0fc4af;
 }
 
+.nav-bar .active {
+	color: #313131;
+}
 
 .nav-bar li
 {
